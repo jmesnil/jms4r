@@ -1,0 +1,16 @@
+jms4r[http://github.com/jmesnil/jms4r/] is a JMS library for JRuby.
+
+It can be used to write simple Ruby scripts running on JRuby[http://jruby.org]
+to send and receive messages using JMS[http://java.sun.com/products/jms/].
+
+Use JBoss Messaging (from r5804)
+
+== Test
+
+  jruby -S rake test
+  
+== Contribute
+
+  git clone git://github.com/jmesnil/jms4r.git
+
+
