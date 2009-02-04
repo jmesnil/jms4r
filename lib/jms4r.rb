@@ -10,10 +10,19 @@ module JMS
     include_class 'org.jboss.messaging.jms.client.JBossConnectionFactory'
     include_class 'org.jboss.messaging.core.config.TransportConfiguration'
 
-    def initialize
+    # creates a connection to a JMS server.
+    #
+    # connection::  a javax.jms.Connection. If none is passed,
+    #               creates a JMS Connection using default JBoss Messaging
+    #               configuration
+    def initialize(connection=nil)
+      @connection = connection || create_jboss_messaging_connection
+    end
+
+    def create_jboss_messaging_connection
       connector_factory = 'org.jboss.messaging.integration.transports.netty.NettyConnectorFactory'
       connection_factory = JBossConnectionFactory.new TransportConfiguration.new(connector_factory)
-      @connection = connection_factory.create_connection
+      connection_factory.create_connection
     end
 
     # Forward all other method messages to the underlying Connection instance.
