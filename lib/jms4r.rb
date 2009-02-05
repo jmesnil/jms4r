@@ -4,7 +4,9 @@ require 'java'
 
 module JMS
 
+  require 'session_helpers'
   require 'message_consumer_helpers'
+  require 'message_helpers'
 
   class Connection
     include_class 'org.jboss.messaging.jms.client.JBossConnectionFactory'
